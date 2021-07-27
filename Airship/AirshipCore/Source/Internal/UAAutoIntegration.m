@@ -49,7 +49,7 @@ static dispatch_once_t onceToken;
     return self;
 }
 
-- (void)swizzleAppDelegate {
+- (void)swizzleAppDelegate NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     id delegate = [UIApplication sharedApplication].delegate;
     if (!delegate) {
         UA_LERR(@"App delegate not set, unable to perform automatic setup.");

@@ -462,7 +462,7 @@ BOOL uaLoudImpErrorLoggingEnabled = YES;
 - (void)validate {
     // Background notification validation
     if (self.remoteNotificationBackgroundModeEnabled) {
-
+#if NS_EXTENSION_UNAVAILABLE_IOS
         if (self.config.automaticSetupEnabled) {
             id delegate = [UIApplication sharedApplication].delegate;
 
@@ -484,6 +484,7 @@ BOOL uaLoudImpErrorLoggingEnabled = YES;
                 UA_LIMPERR(@"Application is set up to receive background notifications, but the app delegate does not implements application:didReceiveRemoteNotification:fetchCompletionHandler:. Use either UAirship automaticSetupEnabled or implement a proper application:didReceiveRemoteNotification:fetchCompletionHandler: in the app delegate.");
             }
         }
+#endif
     } else {
 #if !TARGET_OS_TV   // remote-notification background mode not supported in tvOS
         UA_LIMPERR(@"Application is not configured for background notifications. "

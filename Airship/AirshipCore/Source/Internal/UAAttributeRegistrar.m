@@ -21,7 +21,8 @@ static NSString *const NamedUserPersistentQueueKey = @"com.urbanairship.named_us
 @implementation UAAttributeRegistrar
 
 + (instancetype)channelRegistrarWithConfig:(UARuntimeConfig *)config
-                                 dataStore:(UAPreferenceDataStore *)dataStore {
+                                 dataStore:(UAPreferenceDataStore *)dataStore
+NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
 
     UAPersistentQueue *queue = [UAPersistentQueue persistentQueueWithDataStore:dataStore
                                                                            key:ChannelPersistentQueueKey];
@@ -32,7 +33,8 @@ static NSString *const NamedUserPersistentQueueKey = @"com.urbanairship.named_us
 }
 
 + (instancetype)namedUserRegistrarWithConfig:(UARuntimeConfig *)config
-                                   dataStore:(UAPreferenceDataStore *)dataStore {
+                                   dataStore:(UAPreferenceDataStore *)dataStore
+NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
 
     UAPersistentQueue *queue = [UAPersistentQueue persistentQueueWithDataStore:dataStore
                                                                            key:NamedUserPersistentQueueKey];

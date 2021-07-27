@@ -420,7 +420,7 @@ static double const DefaultResizableViewAnimationDuration = 0.2;
     }];
 }
 
-- (void)refreshViewForCurrentOrientation {
+- (void)refreshViewForCurrentOrientation NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     if (self.displayFullScreen) {
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         // Black out the inset and compensate for excess vertical safe area when iPhone X is horizontal

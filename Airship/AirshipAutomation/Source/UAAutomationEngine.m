@@ -143,7 +143,7 @@ static NSString * const UAAutomationEngineTaskExtrasIdentifier = @"identifier";
                                                           date:date];
 }
 
-+ (instancetype)automationEngineWithAutomationStore:(UAAutomationStore *)automationStore {
++ (instancetype)automationEngineWithAutomationStore:(UAAutomationStore *)automationStore NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     return [[UAAutomationEngine alloc] initWithAutomationStore:automationStore
                                                appStateTracker:[UAAppStateTracker shared]
                                                    taskManager:[UATaskManager shared]

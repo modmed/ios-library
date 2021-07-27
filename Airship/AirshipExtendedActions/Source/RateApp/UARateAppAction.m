@@ -186,11 +186,13 @@ NSString *const UARateAppLinkPromptTimestampsKey = @"RateAppActionLinkPromptCoun
 }
 
 - (BOOL)canLinkToStore:(NSString *)linkString {
+#if NS_EXTENSION_UNAVAILABLE_IOS
     // If the URL can't be opened, bail before displaying
     if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:linkString]]) {
         UA_LWARN(@"Unable to open iTunes URL: %@", linkString);
         return NO;
     }
+#endif
     return YES;
 }
 
@@ -200,7 +202,9 @@ NSString *const UARateAppLinkPromptTimestampsKey = @"RateAppActionLinkPromptCoun
         return;
     }
 
+#if NS_EXTENSION_UNAVAILABLE_IOS
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkString] options:@{} completionHandler:nil];
+#endif
 }
 
 // Rate app action with application's track ID using a store URL link

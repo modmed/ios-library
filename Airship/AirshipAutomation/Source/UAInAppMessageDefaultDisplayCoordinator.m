@@ -55,7 +55,7 @@
     [self emitChangeNotification:NO];
 }
 
-- (void)setIsDisplayLocked:(BOOL)isDisplayLocked {
+- (void)setIsDisplayLocked:(BOOL)isDisplayLocked NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     if (_isDisplayLocked != isDisplayLocked) {
         _isDisplayLocked = isDisplayLocked;
 
@@ -90,7 +90,7 @@
     self.isDisplayLocked = YES;
 }
 
-- (BOOL)isReady {
+- (BOOL)isReady NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     // Require an active application
     if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
         UA_LTRACE(@"Application is not active. Display Coordinator not ready: %@", self);

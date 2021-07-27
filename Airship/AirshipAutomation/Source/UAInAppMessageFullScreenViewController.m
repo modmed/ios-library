@@ -360,7 +360,8 @@ NSString *const UAInAppMessageFullScreenViewNibName = @"UAInAppMessageFullScreen
     [self addInitialConstraintsToParentView:self.fullScreenWindow fullScreenView:self.view];
 }
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     BOOL statusBarShowing = !([UIApplication sharedApplication].isStatusBarHidden);
 
     UIWindow *window = [UIApplication sharedApplication].keyWindow;

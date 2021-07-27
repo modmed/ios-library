@@ -269,10 +269,12 @@ NSString *const UALocationUpdatesEnabled = @"UALocationUpdatesEnabled";
         return;
     }
 
+#if NS_EXTENSION_UNAVAILABLE_IOS
     if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
         UA_LINFO("Location updates require authorization, but app is not active. Authorization will be requested next time the app is active.");
         return;
     }
+#endif
 
     if (![self usageDescriptionsAreValid]) {
         return;

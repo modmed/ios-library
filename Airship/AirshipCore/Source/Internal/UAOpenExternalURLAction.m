@@ -43,6 +43,7 @@ NSString * const UAOpenExternalURLActionErrorDomain = @"com.urbanairship.actions
 
 - (void)openURL:(NSURL *)url completionHandler:(UAActionCompletionHandler)completionHandler {
    [[UADispatcher mainDispatcher] dispatchAsync:^{
+#if NS_EXTENSION_UNAVAILABLE_IOS
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
             if (!success) {
                 // Unable to open url
@@ -55,6 +56,7 @@ NSString * const UAOpenExternalURLActionErrorDomain = @"com.urbanairship.actions
                 completionHandler([UAActionResult resultWithValue:url.absoluteString]);
             }
         }];
+#endif
    }];
 }
 

@@ -82,10 +82,12 @@
     static UATaskManager *sharedTaskManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+#if NS_EXTENSION_UNAVAILABLE_IOS
         sharedTaskManager = [[UATaskManager alloc] initWithApplication:[UIApplication sharedApplication]
                                                     notificationCenter:[NSNotificationCenter defaultCenter]
                                                             dispatcher:[UADispatcher globalDispatcher]
                                                         networkMonitor:[[UANetworkMonitor alloc] init]];
+#endif
     });
     return sharedTaskManager;
 }

@@ -153,7 +153,7 @@ NSTimeInterval const UADeviceTokenRegistrationWaitTime = 10;
                      dataStore:(UAPreferenceDataStore *)dataStore
                        channel:(UAChannel<UAExtendableChannelRegistration> *)channel
                      analytics:(UAAnalytics<UAExtendableAnalyticsHeaders> *)analytics
-                privacyManager:(UAPrivacyManager *)privacyManager {
+                privacyManager:(UAPrivacyManager *)privacyManager NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     return [[self alloc] initWithConfig:config
                               dataStore:dataStore
                                 channel:channel

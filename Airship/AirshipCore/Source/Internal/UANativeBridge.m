@@ -91,10 +91,12 @@ NSString *const UANativeBridgeMultiCommand = @"multi";
     void (^handleLink)(void) = ^{
         // If target frame is a new window navigation, have OS handle it
         if (!navigationAction.targetFrame) {
+#if NS_EXTENSION_UNAVAILABLE_IOS
             [[UIApplication sharedApplication] openURL:navigationAction.request.URL options:@{} completionHandler:^(BOOL success) {
                 decisionHandler(success ? WKNavigationActionPolicyCancel : WKNavigationActionPolicyAllow);
             }];
             return;
+#endif
         }
 
         // Default behavior
@@ -308,7 +310,7 @@ NSString *const UANativeBridgeMultiCommand = @"multi";
  * @param url The link's URL.
  * @param completion  The completion handler to execute when openURL processing is complete.
  */
-- (void)handleLinkClick:(NSURL *)url completionHandler:(void (^)(BOOL success))completion {
+- (void)handleLinkClick:(NSURL *)url completionHandler:(void (^)(BOOL success))completion NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     NSArray *forwardSchemes = @[@"itms-apps", @"maps", @"sms", @"tel", @"mailto"];
     NSArray *forwardHosts = @[@"maps.google.com", @"www.youtube.com", @"phobos.apple.com", @"itunes.apple.com"];
     if ([forwardSchemes containsObject:[url scheme].lowercaseString] || [forwardHosts containsObject:[url host].lowercaseString]) {

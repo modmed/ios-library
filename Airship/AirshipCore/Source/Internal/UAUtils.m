@@ -256,6 +256,7 @@ NSString * const UAConnectionTypeWifi = @"wifi";
 + (UIWindow *)mainWindow {
     UIWindow *window;
 
+#if NS_EXTENSION_UNAVAILABLE_IOS
     id<UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
     // Prefer the window property on the app delegate, if accessible
     if ([appDelegate respondsToSelector:@selector(window)]){
@@ -268,6 +269,7 @@ NSString * const UAConnectionTypeWifi = @"wifi";
             return w;
         }
     }
+#endif
 
     return window;
 }

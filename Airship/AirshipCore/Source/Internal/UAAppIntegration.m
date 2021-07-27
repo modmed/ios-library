@@ -187,7 +187,8 @@
 
 + (void)handleIncomingNotification:(UANotificationContent *)notificationContent
             foregroundPresentation:(BOOL)foregroundPresentation
-                 completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+                 completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     UA_LINFO(@"Received notification: %@", notificationContent);
 
     dispatch_group_t dispatchGroup = dispatch_group_create();
@@ -273,7 +274,8 @@
 
 + (void)runActionsForRemoteNotification:(UANotificationContent *)notificationContent
                  foregroundPresentation:(BOOL)foregroundPresentation
-                      completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+                      completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     UASituation situation = [UIApplication sharedApplication].applicationState == UIApplicationStateActive ? UASituationForegroundPush : UASituationBackgroundPush;
     NSDictionary *actionsPayload = [self actionsPayloadForNotificationContent:notificationContent actionIdentifier:nil];
 

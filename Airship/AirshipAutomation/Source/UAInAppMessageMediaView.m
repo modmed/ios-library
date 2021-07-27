@@ -158,6 +158,7 @@ static CGFloat const DefaultVideoHeightPadding = 60;
 -(void)layoutSubviews {
     [super layoutSubviews];
 
+#if NS_EXTENSION_UNAVAILABLE_IOS
     if (self.hideWindowWhenVideoIsFullScreen) {
         if (!self.modalWindowResignedKey) {
             UA_WEAKIFY(self);
@@ -176,6 +177,7 @@ static CGFloat const DefaultVideoHeightPadding = 60;
             }];
         }
     }
+#endif
 
     self.heightConstraint.active = NO;
     // Limit absolute height to window height - padding

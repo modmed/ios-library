@@ -73,6 +73,7 @@
 - (UAApplicationState)state {
     __block UAApplicationState result;
     [self.dispatcher doSync:^{
+#if NS_EXTENSION_UNAVAILABLE_IOS
         switch ([UIApplication sharedApplication].applicationState) {
             case UIApplicationStateActive:
                 result = UAApplicationStateActive;
@@ -83,6 +84,7 @@
             case UIApplicationStateBackground:
                 result = UAApplicationStateBackground;
         }
+#endif
     }];
 
     return result;

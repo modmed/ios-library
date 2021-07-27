@@ -61,7 +61,7 @@ NSString *const UAEnableBackgroundLocationActionValue = @"background_location";
     return YES;
 }
 
-- (void)navigateToSystemSettingsWithCompletionHandler:(UAActionCompletionHandler)completionHandler {
+- (void)navigateToSystemSettingsWithCompletionHandler:(UAActionCompletionHandler)completionHandler NS_EXTENSION_UNAVAILABLE_IOS("Uses APIs not available for use in App Extensions.") {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]
                                        options:@{}
                              completionHandler:^(BOOL success) {
